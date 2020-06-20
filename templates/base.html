@@ -9,6 +9,18 @@
     <title>tack manager</title>
 </head>
 <body>
+<div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Task Manegar</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="{{ 'active' if active_page == 'tasks' else '' }}"><a href="{{url_for('get_tasks')}}">Home</a></li>
+        <li class="{{ 'active' if active_page == 'addtask' else '' }}"><a href="{{url_for('add_task')}}">Add New Task</a></li>
+        <li class="{{ 'active' if active_page == '' else '' }}"><a href="collapsible.html">Category</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 <div class="container">
     {% block content %}
     {% endblock %}
@@ -19,6 +31,7 @@
   $(document).ready(function(){
     $('.collapsible').collapsible();
     $('select').material_select();
+    $(".dropdown-button").dropdown();
   });
   // another javascripte for the datapicker
         $('.datepicker').pickadate({
