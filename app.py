@@ -39,7 +39,7 @@ def edit_task(task_id):
                            categories=all_categories)
 
 
-@app.route("update_task/<task_id>", methods=["POST"])
+@app.route("/update_task/<task_id>", methods=["POST"])
 def update_task(task_id):
     tasks = mongo.db.tasks
     tasks.update({"_id": ObjectId(task_id)},
