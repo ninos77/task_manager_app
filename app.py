@@ -19,6 +19,17 @@ def get_tasks():
     return render_template("tasks.html", tasks=mongo.db.tasks.find())
 
 
+@app.route("/get_categories")
+def get_categories():
+    return render_template("categories.html",
+                           categories=mongo.db.categories.find())
+
+
+@app.route("/edit_category/<category_id>")
+def edit_category(category_id):
+    the_category=mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("editcategory.html", category=the_category)
+
 @app.route("/add_task")
 def add_task():
     return render_template("addtask.html", categories = mongo.db.categories.find())

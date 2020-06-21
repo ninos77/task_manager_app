@@ -16,7 +16,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="{{ 'active' if active_page == 'tasks' else '' }}"><a href="{{url_for('get_tasks')}}">Home</a></li>
         <li class="{{ 'active' if active_page == 'addtask' else '' }}"><a href="{{url_for('add_task')}}">Add New Task</a></li>
-        <li class="{{ 'active' if active_page == '' else '' }}"><a href="collapsible.html">Category</a></li>
+        <li class="{{ 'active' if active_page == 'categories' else '' }}"><a href="{{url_for('get_categories')}}">Category</a></li>
       </ul>
     </div>
   </nav>
