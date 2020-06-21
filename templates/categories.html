@@ -7,7 +7,8 @@
         <li>
             <div class="collapsible-header">
                 <div class="col s3">
-                    <a href="{{url_for('edit_category', category_id=cat._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                <a href="{{url_for('delet_category', category_id=cat._id)}}" class="waves-effect red btn btn_small">Delet</a>
+                <a href="{{url_for('edit_category', category_id=cat._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 </div>
                 <div class="task_header col s9">
                     <strong>{{cat.category_name}}</strong>
@@ -19,7 +20,7 @@
 
 </div>
     <div class="row">
-      <a class="btn waves-effect waves-light" type="submit" name="action">Add Category
+      <a href="{{url_for('add_category')}}" class="btn waves-effect waves-light">Add Category
         <i class="material-icons right">edit</i>
      </a>
     </div>

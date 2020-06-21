@@ -25,10 +25,41 @@ def get_categories():
                            categories=mongo.db.categories.find())
 
 
+@app.route("/add_category")
+def add_category():
+    return render_template("addcategory.html")
+
+
+@app.route("/insert_category",methods=["POST"])
+def insert_category():
+    categories=mongo.db.categories
+    categories.insert_one(request.form.to_dict())
+    return redirect(url_for("get_categories"))
+
+
+
+
 @app.route("/edit_category/<category_id>")
 def edit_category(category_id):
     the_category=mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("editcategory.html", category=the_category)
+
+
+@app.route("/update_category/<category_id>", methods=["POST"])
+def update_category(category_id):
+    categories = mongo.db.categories
+    categories.update({"_id": ObjectId(category_id)},
+    {
+         'category_name': request.form.get('category_name'),
+    })
+    return redirect(url_for("get_categories"))
+
+
+@app.route('/delet_category/<category_id>')
+def delet_category(category_id):
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    return redirect(url_for("get_categories"))
+
 
 @app.route("/add_task")
 def add_task():
